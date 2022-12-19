@@ -8,4 +8,24 @@ use Illuminate\Database\Eloquent\Model;
 class Project extends Model
 {
     use HasFactory;
+
+    public function Student()
+    {
+        return $this->belongsTo(Student::class);
+    }
+
+    public function Supervisor()
+    {
+        return $this->belongsTo(User::class, 'supervisor_id');
+    }
+
+    public function Examiner1()
+    {
+        return $this->belongsTo(User::class, 'examiner1_id');
+    }
+
+    public function Examiner2()
+    {
+        return $this->belongsTo(User::class, 'examiner2_id');
+    }
 }

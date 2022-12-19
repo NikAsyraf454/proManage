@@ -24,8 +24,8 @@ return new class extends Migration
             $table->foreign('examiner1_id')->references('id')->on('users')->nullOnDelete();
             $table->unsignedBigInteger('examiner2_id')->nullable();
             $table->foreign('examiner2_id')->references('id')->on('users')->nullOnDelete();
-            $table->timestamp('start_date')->nullable();
-            $table->timestamp('end_date')->nullable();
+            $table->date('start_date')->nullable();
+            $table->date('end_date')->nullable();
             $table->string('progress')->nullable();
             $table->string('status')->nullable();
             $table->timestamps();

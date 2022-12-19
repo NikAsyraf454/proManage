@@ -17,14 +17,16 @@
 </tr>
 @foreach($project as $proj)
 <tr>
-    <td>{{$proj['id']}}</td>
-    <td>{{$proj['name']}}</td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td><a href={{"update/".$proj['id']}}>Update</a></td>
-    <td><a href={{"delete/".$proj['id']}}>Delete</a></td>
+    <td>{{$proj->id}}</td>
+    <td>{{$proj->name}}</td>
+    <td><a href="">{{$proj->Student->name ?? "None"}}</a></td>
+    <td><a href="">{{$proj->Supervisor->name ?? "None"}}</a></td>
+    <td><a href="">{{$proj->Examiner1->name ?? "None"}}</a></td>
+    <td><a href="">{{$proj->Examiner2->name ?? "None"}}</a></td>
+    <td>{{$proj['start_date']}}</td>
+    <td>{{$proj['end_date']}}</td>
+    <td><a href={{"updateProjForm/".$proj['id']}}>Update</a></td>
+    <td><a href={{"deleteProj/".$proj['id']}}>Delete</a></td>
 </tr>
 @endforeach
 </table>

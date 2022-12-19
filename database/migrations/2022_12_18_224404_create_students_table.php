@@ -16,6 +16,9 @@ return new class extends Migration
         Schema::create('students', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('student_id')->nullable();
+            // $table->unsignedBigInteger('project_id')->nullable();
+            // $table->foreign('project_id')->references('id')->on('projects')->nullOnDelete();
             $table->timestamps();
         });
     }

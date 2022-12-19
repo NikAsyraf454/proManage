@@ -10,11 +10,11 @@
 </tr>
 @foreach($student as $stud)
 <tr>
-    <td>{{$stud['id']}}</td>
-    <td>{{$stud['name']}}</td>
-    <td></td>
-    <td><a href={{"update/".$stud['id']}}>Update</a></td>
-    <td><a href={{"delete/".$stud['id']}}>Delete</a></td>
+    <td>{{$stud->id}}</td>
+    <td><a href="">{{$stud->name ?? "None"}}</a></td>
+    <td><a href="">{{$stud->Project->name ?? "None"}}</a></td>
+    <td><a href={{"updateStudForm/".$stud['id']}}>Update</a></td>
+    <td><a href={{"deleteStud/".$stud['id']}}>Delete</a></td>
 </tr>
 @endforeach
 </table>
