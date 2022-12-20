@@ -26,6 +26,7 @@ return new class extends Migration
             $table->foreign('examiner2_id')->references('id')->on('users')->nullOnDelete();
             $table->date('start_date')->nullable();
             $table->date('end_date')->nullable();
+            $table->integer('duration')->nullable();
             $table->string('progress')->nullable();
             $table->string('status')->nullable();
             $table->timestamps();

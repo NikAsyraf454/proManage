@@ -8,21 +8,12 @@ use App\Models\Project;
 
 class studentCtrl extends Controller
 {
-    function AddStudentPage()
-    {
-        $stud = new Student();
-
-        $stud->name = $req->name;
-        $stud->save();
-
-        return redirect("/studentList");
-    }
-
     function AddStudent(Request $req)
     {
         $stud = new Student();
 
         $stud->name = $req->name;
+        $stud->student_id = $req->student_id;
         $stud->save();
 
         return redirect("/studentList");
@@ -40,6 +31,24 @@ class studentCtrl extends Controller
         $stud = Student::all();
 
         return view('Student.studentList', ['student'=> $stud]);
+    }
+
+    function UpdateStudentForm($id)
+    {
+        $stud = Student::find($id);
+
+        return view("Student.updateStudentForm", ['stud' => $stud]);
+    }
+
+    function UpdateStudent(Request $req)
+    {
+        $stud = Student::find($req->id);
+
+        $stud->name = $req->name;
+        $stud->student_id = $req->student_id;
+        $stud->save();
+
+        return redirect("/studentList");
     }
 
     function DeleteStudent($id)
