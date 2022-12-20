@@ -29,6 +29,7 @@ class projectCtrl extends Controller
         $proj->examiner1_id = empty($req->examiner1_id) ? null : $req->examiner1_id;
         $proj->examiner2_id = empty($req->examiner2_id) ? null : $req->examiner2_id;
         $proj->start_date = empty($req->start_date) ? null : $req->start_date;
+        $proj->duration = empty($req->duration) ? null : $req->duration;
         $proj->end_date = empty($req->end_date) ? null : $req->end_date;
         $proj->progress = empty($req->progress) ? null : $req->progress;
         $proj->status = empty($req->status) ? null : $req->status;
@@ -64,6 +65,7 @@ class projectCtrl extends Controller
         $proj->examiner2_id = empty($req->examiner2_id) ? null : $req->examiner2_id;
         $proj->start_date = empty($req->start_date) ? null : $req->start_date;
         $proj->end_date = empty($req->end_date) ? null : $req->end_date;
+        $proj->duration = empty($req->duration) ? null : $req->duration;
         $proj->progress = empty($req->progress) ? null : $req->progress;
         $proj->status = empty($req->status) ? null : $req->status;
         $proj->save();
