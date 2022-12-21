@@ -11,9 +11,9 @@ class projectCtrl extends Controller
 {
     function Homepage()
     {
-        $stud = Student::all();
+        $stud = Student::paginate(4);
         $user = User::all();
-        $proj = Project::all();
+        $proj = Project::paginate(4);
         return view('User.home', ['students'=> $stud, 'users' => $user, 'projects' => $proj]);
     }
 
@@ -48,15 +48,16 @@ class projectCtrl extends Controller
             $stud->save();
         }
 
-        return redirect("/home");
+        return redirect("/projectList");
 
     }
 
     function ListAllProject()
     {
-        $proj = Project::all();
-
-        return view('Project.projectList', ['project'=> $proj]);
+        $stud = Student::all();
+        $user = User::all();
+        $proj = Project::paginate(5);
+        return view('Project.projectList', ['students'=> $stud, 'users' => $user, 'projects' => $proj]);
     }
 
     function UpdateProjectForm($id)
@@ -97,14 +98,14 @@ class projectCtrl extends Controller
             $stud->save();
         }
 
-        return redirect('/home');
+        return redirect('/projectList');
     }
 
     function DeleteProject($id)
     {
         $proj = Project::find($id);
         $proj->delete();
-        return redirect('/home');
+        return redirect('/projectList');
     }
 
     function GetStudent($id)

@@ -26,6 +26,11 @@
                     @auth
                         <li><a href="{{ url('/home') }}"> Dashboard </a></li>
                         <li><a href="{{ url('/user/profile') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Profile Settings</a></li>
+                        <li><a href="/studentList">Student List</a></li>
+                        <li><a href="/projectList">Project List</a></li>
+                        @php if(Auth::user()->usertype == 1) { @endphp
+                        <li><a href="/userList">User List</a></li>
+                        @php } @endphp
                         <li><a href="{{ url('/logout') }}"> logout </a></li>
                     @else
                         <li><a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a></li>

@@ -47,7 +47,7 @@
                             </tr>
                             <tr>
                                 <td><label for="inputEmail">Supervisor</label></td>
-                                <td><select class="form-control" id="supervisor_id{{$i}}" name="supervisor_id">
+                                <td><select class="form-control" id="supervisor_id{{$i}}" name="supervisor_id" @php if(Auth::user()->usertype == 0) { echo "disabled";} @endphp>
                                         <option value="" selected disabled>Assign Supervisor</option>
                                         @foreach ($users as $user => $value)
                                         <?php if ($value->usertype == 0) {
@@ -70,7 +70,7 @@
 
                             <tr>
                                 <td><label for="inputEmail">Examiner 1: </label></td>
-                                <td><select class="form-control" id="examiner1_id{{$i}}" name="examiner1_id">
+                                <td><select class="form-control" id="examiner1_id{{$i}}" name="examiner1_id" @php if(Auth::user()->usertype == 0) { echo "disabled";} @endphp>
                                         <option value="" selected disabled>Assign Examiner</option>
                                         @foreach ($users as $user => $value)
                                         <?php if ($value->usertype == 0) {
@@ -93,7 +93,7 @@
 
                             <tr>
                                 <td><label for="inputEmail">Examiner 2:</label></td>
-                                <td><select class="form-control" id="examiner2_id{{$i}}" name="examiner2_id">
+                                <td><select class="form-control" id="examiner2_id{{$i}}" name="examiner2_id" @php if(Auth::user()->usertype == 0) { echo "disabled";} @endphp>
                                         <option value="" selected disabled>Assign Examiner</option>
                                         @foreach ($users as $user => $value)
                                         <?php if ($value->usertype == 0) {

@@ -37,15 +37,13 @@
   <hr>
 
   <!-- Button trigger modal -->
-  @php if(Auth::User()->usertype == 1) { @endphp
   <div class="col-12">
     <div style="position: relative; margin: 10px;" class=" no-padding">
-      <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#AddStudentModal">
-        Add Student
+      <a href="/studentList" class="btn btn-primary">
+        Student List
       </a>
     </div>
   </div>
-  @php } @endphp
 
   <div class="col-12">
     <div class="panel panel-default templatemo-content-widget white-bg no-padding templatemo-overflow-hidden">
@@ -61,10 +59,7 @@
               <td>Name</td>
               <td>Student ID</td>
               <td>Project</td>
-              @php if(Auth::user()->usertype == 1) { @endphp
-              <td>Update</td>
-              <td>Delete</td>
-              @php } @endphp
+
             </tr>
           </thead>
 
@@ -76,14 +71,7 @@
               <td>{{$stud->name ?? ""}}</td>
               <td>{{$stud->student_id ?? ""}}</td>
               <td>{{$stud->Project->name ?? ""}}</td>
-              @php if(Auth::user()->usertype == 1) { @endphp
-              <td><a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#studentUpdateModal{{$i}}">
-                  Edit
-                </a></td>
-              <td><a class="btn btn-primary" href={{"deleteStud/".$stud['id']}}>Delete</a></td>
-              @php } @endphp
-            </tr>
-            @php $i = $i +1 @endphp
+
             @endforeach
           </tbody>
         </table>
@@ -91,16 +79,14 @@
     </div>
   </div>
 
-  @php if(Auth::user()->usertype == 1) { @endphp
   <!-- Button trigger modal -->
   <div class="col-12">
     <div style="position: relative; margin: 10px;" class=" no-padding">
-      <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#AddProjectModal">
-        Add Project
+      <a href="/projectList" class="btn btn-primary">
+        Project List
       </a>
     </div>
   </div>
-  @php } @endphp
 
   <div class="col-13">
     <div class="panel panel-default templatemo-content-widget white-bg no-padding templatemo-overflow-hidden">
@@ -112,8 +98,8 @@
         <table class="table table-striped table-bordered">
           <thead>
             <tr>
-              <!-- <td>No.</td> -->
-              <td>ID</td>
+              <!-- <td>No.</td>
+              <td>ID</td> -->
               <td>Name</td>
               <td>Project Type</td>
               <td>Student</td>
@@ -125,10 +111,6 @@
               <td>Duration</td>
               <td>Project Progress</td>
               <td>Project Status</td>
-              <td>Operation</td>
-              @php if(Auth::user()->usertype == 1) { @endphp
-              <td>Operation</td>
-              @php } @endphp
             </tr>
           </thead>
 
@@ -137,7 +119,7 @@
             @foreach($projects as $proj)
             <tr>
               <!-- <td>{{$stud->id}}</td> -->
-              <td>{{$proj->id}}</td>
+              <!-- <td>{{$proj->id}}</td> -->
               <td>{{$proj->name}}</td>
               <td>{{$proj->project_type}}</td>
               <td>{{$proj->Student->name ?? ""}}</td>
@@ -149,14 +131,7 @@
               <td>{{$proj->duration ?? ""}}</td>
               <td>{{$proj->progress ?? ""}}</td>
               <td>{{$proj->status ?? ""}}</td>
-              <td><a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateProjectModal{{$i}}">
-                  Edit
-                </a></td>
-              @php if(Auth::user()->usertype == 1) { @endphp
-              <td><a class="btn btn-primary" href={{"deleteProj/".$proj['id']}}>Delete</a></td>
-              @php } @endphp
-            </tr>
-            @php $i = $i +1 @endphp
+
             @endforeach
           </tbody>
         </table>
@@ -172,17 +147,6 @@
   </div>
   </div>
 
-  <!-- Add Project Modal -->
-  @include('Project.addProjectForm');
-
-  <!-- Update Project Modal -->
-  @include('Project.updateProjectForm');
-
-  <!-- Add Student Modal -->
-  @include('Student.addStudentForm');
-
-  <!-- Update student form, with loop -->
-  @include('Student.updateStudentForm');
 
 
 
@@ -255,11 +219,7 @@
   @php $i = 0 @endphp
   @foreach($projects as $proj)
   <script>
-    const setup {
-      {
-        $i
-      }
-    } = () => {
+    const setup{{$i}} = () => {
       let firstDate = $('#start_date{{$i}}').val();
       let secondDate = $('#end_date{{$i}}').val();
       const findTheDifferenceBetweenTwoDates = (firstDate, secondDate) => {
@@ -278,20 +238,12 @@
     $(document).ready(function() {
       $('#start_date{{$i}}').change(function() {
         if ($('#end_date{{$i}}').val() != '') {
-          setup {
-            {
-              $i
-            }
-          }();
+          setup{{$i}}();
         }
       })
       $('#end_date{{$i}}').change(function() {
         if ($('#start_date{{$i}}').val() != '') {
-          setup {
-            {
-              $i
-            }
-          }();
+          setup{{$i}}();
         }
       })
     });
@@ -300,11 +252,7 @@
   @endforeach
 
   <script>
-    const setup {
-      {
-        $i
-      }
-    } = () => {
+    const setup{{$i}} = () => {
       let firstDate = $('#start_date').val();
       let secondDate = $('#end_date').val();
       const findTheDifferenceBetweenTwoDates = (firstDate, secondDate) => {
@@ -323,43 +271,35 @@
     $(document).ready(function() {
       $('#start_date').change(function() {
         if ($('#end_date').val() != '') {
-          setup {
-            {
-              $i
-            }
-          }();
+          setup{{$i}}();
         }
       })
       $('#end_date').change(function() {
         if ($('#start_date').val() != '') {
-          setup {
-            {
-              $i
-            }
-          }();
+          setup{{$i}}();
         }
       })
     });
   </script>
 
-<script>
-        $(document).ready(function() {
-            $("select").each(function(cSelect) {
-                $(this).data('stored-value', $(this).val());
-            });
+  <script>
+    $(document).ready(function() {
+      $("select").each(function(cSelect) {
+        $(this).data('stored-value', $(this).val());
+      });
 
-            $("select").change(function() {
-                var cSelected = $(this).val();
-                var cPrevious = $(this).data('stored-value');
-                $(this).data('stored-value', cSelected);
+      $("select").change(function() {
+        var cSelected = $(this).val();
+        var cPrevious = $(this).data('stored-value');
+        $(this).data('stored-value', cSelected);
 
-                var otherSelects = $("select").not(this);
+        var otherSelects = $("select").not(this);
 
-                otherSelects.find('option[value=' + cPrevious + ']').removeAttr('disabled');
-                otherSelects.find('option[value=' + cSelected + ']').attr('disabled', 'disabled');
-            });
-        });
-</script>
+        otherSelects.find('option[value=' + cPrevious + ']').removeAttr('disabled');
+        otherSelects.find('option[value=' + cSelected + ']').attr('disabled', 'disabled');
+      });
+    });
+  </script>
 
 </body>
 

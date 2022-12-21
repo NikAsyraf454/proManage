@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Student;
 use App\Models\Project;
+use App\Models\User;
 
 class studentCtrl extends Controller
 {
@@ -16,14 +17,15 @@ class studentCtrl extends Controller
         $stud->student_id = $req->student_id;
         $stud->save();
 
-        return redirect("/home");
+        return redirect("/studentList");
     }
 
     function ListAllStudent()
     {
-        $stud = Student::all();
-
-        return view('Student.studentList', ['student'=> $stud]);
+        $stud = Student::paginate(5);
+        $user = User::all();
+        $proj = Project::all();
+        return view('Student.studentList', ['students'=> $stud, 'users' => $user, 'projects' => $proj]);
     }
 
     function ListStudent()
@@ -48,14 +50,14 @@ class studentCtrl extends Controller
         $stud->student_id = $req->student_id;
         $stud->save();
 
-        return redirect("/home");
+        return redirect("/studentList");
     }
 
     function DeleteStudent($id)
     {
         $stud = Student::find($id);
         $stud->delete();
-        return redirect('/home');
+        return redirect('/studentList');
     }
 
     function GetProject($id)
