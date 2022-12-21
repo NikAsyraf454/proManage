@@ -16,8 +16,9 @@ return new class extends Migration
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->unsignedBigInteger('student_id')->nullable();
-            $table->foreign('student_id')->references('id')->on('students')->nullOnDelete();
+            $table->string('project_type')->nullable();
+            // $table->unsignedBigInteger('student_id')->nullable();
+            // $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
             $table->unsignedBigInteger('supervisor_id')->nullable();
             $table->foreign('supervisor_id')->references('id')->on('users')->nullOnDelete();
             $table->unsignedBigInteger('examiner1_id')->nullable();

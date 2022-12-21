@@ -16,7 +16,7 @@ class studentCtrl extends Controller
         $stud->student_id = $req->student_id;
         $stud->save();
 
-        return redirect("/studentList");
+        return redirect("/home");
     }
 
     function ListAllStudent()
@@ -48,14 +48,14 @@ class studentCtrl extends Controller
         $stud->student_id = $req->student_id;
         $stud->save();
 
-        return redirect("/studentList");
+        return redirect("/home");
     }
 
     function DeleteStudent($id)
     {
         $stud = Student::find($id);
         $stud->delete();
-        return redirect('/studentList');
+        return redirect('/home');
     }
 
     function GetProject($id)

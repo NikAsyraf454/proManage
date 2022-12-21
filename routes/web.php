@@ -16,17 +16,17 @@ use App\Http\Controllers\projectCtrl;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('index');
+});
 
-Route::view('/home', 'User.home');
+Route::get('/home', [projectCtrl::class, 'Homepage']);
 
 Route::view('/addStudent', 'Student.addStudent');
-Route::post('/addStud', [studentCtrl::class, 'AddStudent']);
+Route::get('/addStud', [studentCtrl::class, 'AddStudent']);
 Route::get('/studentList', [studentCtrl::class, 'ListAllStudent']);
-Route::get('/updateStudForm/{id}', [studentCtrl::class, 'UpdateStudentForm']);
-Route::post('/updateStud', [studentCtrl::class, 'UpdateStudent']);
+// Route::get('/updateStudForm/{id}', [studentCtrl::class, 'UpdateStudentForm']);
+Route::get('/updateStud', [studentCtrl::class, 'UpdateStudent']);
 Route::get('/deleteStud/{id}', [studentCtrl::class, 'DeleteStudent']);
 
 Route::get('/getProject/{id}', [studentCtrl::class, 'GetProject']);
@@ -35,7 +35,7 @@ Route::get('/addProject', [projectCtrl::class, 'AddProjectPage']);
 Route::post('/addProj', [projectCtrl::class, 'AddProject']);
 Route::get('/projectList', [projectCtrl::class, 'ListAllProject']);
 Route::get('/updateProjForm/{id}', [projectCtrl::class, 'UpdateProjectForm']);
-Route::post('/updateProj', [projectCtrl::class, 'UpdateProject']);
+Route::get('/updateProj', [projectCtrl::class, 'UpdateProject']);
 Route::get('/deleteProj/{id}', [projectCtrl::class, 'DeleteProject']);
 
 Route::get('/getstudent/{id}', [projectCtrl::class, 'GetStudent']);
@@ -50,3 +50,5 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+Route::get('/logout', '\App\Http\Controllers\userCtrl@logout');

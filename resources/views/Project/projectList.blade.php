@@ -10,6 +10,7 @@
     <td>Examiner 2</td>
     <td>Start Date</td>
     <td>End Date</td>
+    <td>Duration</td>
     <td>Project Progress</td>
     <td>Project Status</td>
     <td>Operation</td>

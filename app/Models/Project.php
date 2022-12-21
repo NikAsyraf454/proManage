@@ -11,7 +11,7 @@ class Project extends Model
 
     public function Student()
     {
-        return $this->belongsTo(Student::class);
+        return $this->hasOne(Student::class);
     }
 
     public function Supervisor()

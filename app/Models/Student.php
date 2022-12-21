@@ -11,6 +11,6 @@ class Student extends Model
 
     public function Project()
     {
-        return $this->hasOne(Project::class);
+        return $this->belongsTo(Project::class);
     }
 }
