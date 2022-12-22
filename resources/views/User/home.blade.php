@@ -301,6 +301,13 @@
     });
   </script>
 
+  <style>
+    td {
+  height: 50px;
+  vertical-align: center;
+}
+    </style>
+
 </body>
 
 </html>

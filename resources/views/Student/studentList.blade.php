@@ -105,6 +105,15 @@
 .pagination {
   --bs-pagination-border-width: 0px;
 }
+
+    td {
+  vertical-align: middle;
+}
+
+.form-control
+{
+  display:unset;
+}
 </style>
 <footer class="text-right">
     <p>Done By Nik Asyraf

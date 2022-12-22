@@ -16,11 +16,11 @@
                         <table>
                             <tr>
                                 <td><label for="inputEmail">Project Name</label></td>
-                                <td><input type="text" name="name" placeholder="Insert Project Name" value="{{$proj->name}}" required><br></td>
+                                <td><input class="form-control" type="text" name="name" placeholder="Insert Project Name" value="{{$proj->name}}" required><br></td>
                             </tr>
                             <tr>
                                 <td><label for="inputEmail">Project Type</label></td>
-                                <td><select name="project_type">
+                                <td><select class="form-control" name="project_type">
                                     @php if(empty($proj->project_type)) { @endphp
                                         <option value="" selected disabled>Project Type</option>
                                         @php } @endphp
@@ -33,7 +33,7 @@
                             <tr>
                             <tr>
                                 <td><label for="inputEmail">Assign Student</label></td>
-                                <td><select class="form-control" name="student_id">
+                                <td><select class="form-control" name="student_id" @php if(Auth::user()->usertype == 0) { echo "disabled";} @endphp>
                                         <option value="" selected disabled>Assign Student</option>
                                         @foreach ($students as $student => $value)
                                         <?php if (!empty($proj->Student->project_id) && ($value->project_id == $proj->id)) { ?>
@@ -115,19 +115,19 @@
                             </tr>
                             <tr>
                                 <td><label for="inputEmail">Start Date</label></td>
-                                <td><input type="date" id="start_date{{$i}}" name="start_date" value="{{$proj->start_date}}"><br></td>
+                                <td><input class="form-control" type="date" id="start_date{{$i}}" name="start_date" value="{{$proj->start_date}}"><br></td>
                             </tr>
                             <tr>
                                 <td><label for="inputEmail">End Date</label></td>
-                                <td><input type="date" name="end_date" id="end_date{{$i}}" placeholder="Date:" value="{{$proj->end_date}}"><br></td>
+                                <td><input class="form-control" type="date" name="end_date" id="end_date{{$i}}" placeholder="Date:" value="{{$proj->end_date}}"><br></td>
                             </tr>
                             <tr>
                                 <td><label for="inputEmail">Duration (months)</label></td>
-                                <td><input type="text" id="duration{{$i}}" name="duration" placeholder="Insert Duration (months)" value="{{$proj->duration}}" readonly><br></td>
+                                <td><input class="form-control" type="text" id="duration{{$i}}" name="duration" placeholder="Insert Duration (months)" value="{{$proj->duration}}" readonly><br></td>
                             </tr>
                             <tr>
                                 <td><label for="inputEmail">Project Progress</label></td>
-                                <td><select name="progress">
+                                <td><select class="form-control" name="progress">
                                     @php if(empty($proj->progress)) { @endphp
                                         <option value"" selected disabled>Project Progress</option>
                                         @php } @endphp
@@ -141,7 +141,7 @@
                             <tr>
                                 <td><label for="inputEmail">Project Status</label></td>
                                 <td>
-                                <select name="status">
+                                <select class="form-control" name="status">
                                     @php if(empty($proj->status)) { @endphp
                                         <option value"" selected disabled>Project Status</option>
                                         @php } @endphp
@@ -153,6 +153,17 @@
                                     </select></td>
                             </tr>
                         </table>
+                        @php if(Auth::user()->usertype == 0) { @endphp
+                            @php if(!empty($proj->supervisor_id)) { @endphp   
+                                <input type=hidden name="supervisor_id" value="{{$proj->supervisor_id}}">
+                            @php } @endphp
+                            @php if(!empty($proj->examiner1_id)) { @endphp   
+                                <input type=hidden name="examiner1_id" value="{{$proj->examiner1_id}}">
+                            @php } @endphp
+                            @php if(!empty($proj->examiner2_id)) { @endphp   
+                                <input type=hidden name="examiner2_id" value="{{$proj->examiner2_id}}">
+                            @php } @endphp
+                        @php } @endphp
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                             <button type="submit" class="btn btn-primary">Save changes</button>

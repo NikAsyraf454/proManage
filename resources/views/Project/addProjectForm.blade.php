@@ -3,7 +3,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Add Student</h1>
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Add Project</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -13,16 +13,12 @@
                         <table>
                             <tr>
                                 <td><label for="inputEmail">Project Name</label></td>
-                                <td><input type="text" name="name" placeholder="Insert Project Name" required><br></td>
+                                <td><input class="form-control" type="text" name="name" placeholder="Insert Project Name" required><br></td>
                             </tr>
                             <tr>
                                 <td><label for="inputEmail">Project Type</label></td>
-                                <td><select name="project_type">
-                                        @php if(empty($proj->project_type)) { @endphp
+                                <td><select class="form-control" name="project_type">
                                         <option value"" selected disabled>Project Type</option>
-                                        @php } else { @endphp
-                                        <option value"{{$proj->project_type}}" selected disabled>{{$proj->project_type}}</option>
-                                        @php } @endphp
                                         <option value="Development">Development</option>
                                         <option value="Research">Research</option>
                                     </select></td>
@@ -80,24 +76,20 @@
                             </tr>
                             <tr>
                                 <td><label for="inputEmail">Start Date</label></td>
-                                <td><input type="date" name="start_date" id="start_date" placeholder="Date:"><br><br></td>
+                                <td><input class="form-control" type="date" name="start_date" id="start_date" placeholder="Date:"><br><br></td>
                             </tr>
                             <tr>
                                 <td><label for="inputEmail">End Date</label></td>
-                                <td><input type="date" name="end_date" id="end_date" placeholder="Date:"><br><br></td>
+                                <td><input class="form-control" type="date" name="end_date" id="end_date" placeholder="Date:"><br><br></td>
                             </tr>
                             <tr>
                                 <td><label for="inputEmail">Duration (months)</label></td>
-                                <td><input type="text" name="duration" id="duration" placeholder="Duration:" readonly></td>
+                                <td><input class="form-control" type="text" name="duration" id="duration" placeholder="Duration:" readonly></td>
                             </tr>
                             <tr>
                                 <td><label for="inputEmail">Project Progress</label></td>
-                                <td><select name="progress">
-                                        @php if(empty($proj->progress)) { @endphp
+                                <td><select class="form-control" name="progress">
                                         <option value"" selected disabled>Project Progress</option>
-                                        @php } else { @endphp
-                                        <option value"{{$proj->progress}}" selected disabled>{{$proj->progress}}</option>
-                                        @php } @endphp
                                         <option value="Milestone 1">Milestone 1</option>
                                         <option value="Milestone 2">Milestone 2</option>
                                         <option value="Final Report">Final Report</option>
@@ -105,12 +97,8 @@
                             </tr>
                             <tr>
                                 <td><label for="inputEmail">Project Status</label></td>
-                                <td><select name="status">
-                                        @php if(empty($proj->status)) { @endphp
+                                <td><select class="form-control" name="status">
                                         <option value"" selected disabled>Project Status</option>
-                                        @php } else { @endphp
-                                        <option value"{{$proj->status}}" selected disabled>{{$proj->status}}</option>
-                                        @php } @endphp
                                         <option value="On track">On track</option>
                                         <option value="Delayed">Delayed</option>
                                         <option value="Extended">Extended</option>

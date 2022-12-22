@@ -19,9 +19,9 @@
                   <td><input type="text" name="student_id" placeholder="Insert Student ID" required><br></td>
                 </tr>
                 <tr>
-                  <td><label for="inputEmail">Assign Project</label></td>
+                  <td><label for="inputEmail">Assign Project</label><br></td>
                   <td><select disabled class="form-control" name="project_id">
-                          <option value="" selected disabled>Locked</option>
+                          <option value="" selected disabled>Add from Project list</option>
                       </select><br>
                   </td>
               </tr>
@@ -36,4 +36,6 @@
       </div>
     </div>
   </div>
+
+  
 

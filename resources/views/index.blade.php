@@ -38,7 +38,7 @@
               <!-- <i class="fa fa-times"></i> -->
               <div class="square"></div>
               <h2 class="templatemo-inline-block">Project Management</h2><hr>
-              <p>Pro - Manage is a Final Year Project 1 Management.</p>
+              <p>Pro - Manage is a Final Year Project Management.</p>
               <p>Manage the projects with ease! <a href="/login">Login</a> or <a href="/register">Register</a> now!</p>              
             </div>
             

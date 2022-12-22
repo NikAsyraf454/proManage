@@ -93,9 +93,11 @@
               <td>{{$proj->duration ?? ""}}</td>
               <td>{{$proj->progress ?? ""}}</td>
               <td>{{$proj->status ?? ""}}</td>
+              @php if(Auth::user()->id == $proj->supervisor_id || Auth::user()->usertype == 1) { @endphp
               <td><a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateProjectModal{{$i}}">
                   Edit
                 </a></td>
+                @php } @endphp
               @php if(Auth::user()->usertype == 1) { @endphp
               <td><a class="btn btn-primary" href={{"deleteProj/".$proj['id']}}>Delete</a></td>
               @php } @endphp
@@ -117,6 +119,15 @@
 
 .pagination {
   --bs-pagination-border-width: 0px;
+}
+
+td {
+  vertical-align: middle;
+}
+
+.form-control
+{
+  display:unset;
 }
 </style>
 
