@@ -60,7 +60,7 @@
               <!-- <td>No.</td> -->
               <!-- <td>ID</td> -->
               <td>Name</td>
-              <td>Project Type</td>
+              <!-- <td>Project Type</td> -->
               <td>Student</td>
               <td>Supervisor</td>
               <td>Examiner 1</td>
@@ -83,7 +83,7 @@
             <tr>
               <!-- <td>{{$proj->id}}</td> -->
               <td>{{$proj->name}}</td>
-              <td>{{$proj->project_type}}</td>
+              <!-- <td>{{$proj->project_type}}</td> -->
               <td>{{$proj->Student->name ?? ""}}</td>
               <td>{{$proj->Supervisor->name ?? ""}}</td>
               <td>{{$proj->Examiner1->name ?? ""}}</td>
